@@ -1,42 +1,3 @@
-<?php
-				$nombre=$_POST['nombre'];
-				$apellido=$_POST['apellido'];
-				$email	=$_POST['email'];
- 		    $telefono=$_POST['telefono'];
-
-		if (isset($_POST['submit'])) {
-			if (empty($nombre) || (is_numeric($nombre))) 
-			{
-				$error1="<p class='error' style='color:#facb43'>*VERIFICA TU NOMBRE </p>";
-			}
-			if (empty($apellido) || (is_numeric($apellido))) 
-			{
-				$error2="<p class='error' style='color:#facb43'>*VERIFICA TU APELLIDO </p>";				
-			}
-			if (empty($email)) {	
-				$error3="<p class='error' style='color:#facb43'>*VERIFICA TU CORREO </p>";
-			}			
-			else
-				{  if(!filter_var($email, FILTER_VALIDATE_EMAIL)) 
-					{
-					$error31="<p class='error' style='color:#facb43'>*El correo es incorrecto </p>";
-					}
-				}
-			if (empty($telefono)|| !is_numeric($telefono)) {
-				$error4="<p class='error'style='color:#facb43'>*VERIFICA TU NUMERO  </p>";				
-			}
-			else{
-					$conexion=mysql_connect("localhost","root","11230830") or die("Problema en la conexion");
-
-					mysql_select_db("bd_ica_express", $conexion) or die ("Problema con la base de datos");
-
-					mysql_query("insert into afiliados(nombres, apellidos, correo, telefono) values ('$_REQUEST[nombre]','$_REQUEST[apellido]','$_REQUEST[email]','$_REQUEST[telefono]' )",$conexion) or die ("problema en el select" .mysql_error());
-					mysql_close($conexion);
-					$exito= "<p class='error' style='font-weight:bold; font-size:18px'>Usted se encuentra afiliado </p>";
-				}				
-		}		
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +31,7 @@
 							<li><a href="index.html">Inicio</a></li>
 							<li><a href="nosotros.html">Nosotros</a></li>
 							<li><a href="servicios.html">Servicios</a></li>
-							<li class="active"><a href="afiliate2.php">Afíliate</a></li>
+							<li class="active"><a href="afiliate.html">Afíliate</a></li>
 							<li><a href="contacto.html">Contacto</a></li>
 							<li class="list-inline-item"><a href="https://web.facebook.com/Taxis-Ica-Express-321708001207676/?ref=br_rs">
 		                    <span class="fa-stack fa-sm">
@@ -93,14 +54,14 @@
 			    <div class="col-lg-offset-4 col-lg-4">
 			    <label>Nombres</label>
 			      <input type="text" class="form-control" name="nombre" placeholder="Nombres"  value="">
-			      <?php echo $error1 ?>
+			     
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <div class="col-lg-offset-4 col-lg-4">
 			    	<label>Apellidos</label>
 			      <input type="text" class="form-control" name="apellido" placeholder="Apellidos"  value="">
-			      <?php echo $error2 ?>
+			    
 			    </div>
 			  </div>
 
@@ -108,8 +69,7 @@
 			    <div class="col-lg-offset-4 col-lg-4">
 			    	<label>Correo Electrónico</label>
 			      <input type="text" class="form-control" name="email" placeholder="Correo Electronico"  value="">			      
-			      <?php echo $error3 ?>
-			        <?php echo $error31 ?>			      
+			    	      
 			    </div>
 			  </div>
 
@@ -117,7 +77,7 @@
 			    <div class="col-lg-offset-4 col-lg-4">
 			    	<label>Telefono</label>
 			     	 <input type="text" class="form-control" name="telefono" placeholder="Telefono"  value="">			 
-			      <?php echo $error4 ?>			    
+			    		    
 			    </div>
 			  </div>
 
@@ -129,7 +89,7 @@
 
 			  <div class="form-group">
 			  	<div class="col-lg-offset-4 col-lg-4" style="margin-left: 470px;">			  		
-					<?php echo $exito ?>					
+					
 			  	</div>
 			  </div>
 			</form>
@@ -145,8 +105,8 @@
 							<li><a href="index.html" style="text-decoration:none">INICIO</a></li>
 							<li><a href="nosotros.html" style="text-decoration:none">NOSOTROS</a></li>
 							<li><a href="servicios.html" style="text-decoration:none">SERVICIOS</a></li>
-							<li><a href="afiliate2.php" style="text-decoration:none">AFÍLIATE</a></li>
-							<li><a href="contactp.html" style="text-decoration:none">CONTACTO</a></li>
+							<li><a href="afiliate.html" style="text-decoration:none">AFÍLIATE</a></li>
+							<li><a href="contacto.html" style="text-decoration:none">CONTACTO</a></li>
 						</ul>
 					</div>
 					<div class="col-xs-6">					
